@@ -60,19 +60,22 @@ MainSearch = class MainSearch extends Component {
     render () {
 
         return (
-            <div className="main-search" style={{
-                maxWidth: '1024px',
-                margin: 'auto'
-            }}>
-            <TextField
-                hintText=""
-                fullWidth={true}
-                floatingLabelText="Lets Find a Job!"
-                onChange={(e) => this.handleChange(e) }
-                value={this.state.value}
-            />
-            <ResultList results={this.state.results} />
-        </div>
+            <div
+                className="main-search"
+                style={{
+                    maxWidth: '1024px',
+                    margin: 'auto'
+                }}
+                >
+                <TextField
+                    hintText=""
+                    fullWidth={true}
+                    floatingLabelText="Lets Find a Job!"
+                    onChange={(e) => this.handleChange(e) }
+                    value={this.state.value}
+                />
+                <ResultList results={this.state.results} />
+            </div>
         )
     }
 }
