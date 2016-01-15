@@ -11,7 +11,7 @@ ResultList = class ResultList extends Component {
         let results = <div>NO RESULTS</div>
         if (this.props.results) {
             results = this.props.results.map((result) => {
-                return <Result key={result.url} {... result} />
+                return <Result key={result.jobkey} {... result} />
             })
         }
 
@@ -22,4 +22,3 @@ ResultList = class ResultList extends Component {
         )
     }
 }
-

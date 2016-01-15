@@ -49,6 +49,7 @@ MainSearch = class MainSearch extends Component {
             open: false
         })
     }
+
     handleChange(event) {
         newValue = event.target.value
         this.setState({
@@ -79,4 +80,3 @@ MainSearch = class MainSearch extends Component {
         )
     }
 }
-

@@ -26,7 +26,7 @@ if (Meteor.isServer) {
             console.log(`Searching Indeed for: ${searchQuery}`)
             this.unblock()
             return HTTP.call(
-                'get',
+                'GET',
                 'http://api.indeed.com/ads/apisearch',
                 {
                     params: {
@@ -37,6 +37,16 @@ if (Meteor.isServer) {
                         v: '2'
                     }
                 }
+            )
+        },
+
+        curlUrl (url, params) {
+            console.log(`Curling: ${url}`)
+            this.unblock()
+            return HTTP.call(
+                'GET',
+                url,
+                params
             )
         }
     })

@@ -42,7 +42,6 @@ App = class App extends Component {
                     <MenuItem onTouchTap={this.handleClose}>Menu Item 2</MenuItem>
                 </LeftNav>
                 <main>
-                    <pre>{JSON.stringify(this.state, null, 2)}</pre>
                     <h1>Welcome To Za Warudo</h1>
                     <MainSearch />
                 </main>

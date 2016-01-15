@@ -6,13 +6,29 @@ Result = class Result extends Component {
     constructor(props) {
         super(props)
         this.state = {
-
+            html: null,
+            expandedText: null,
         }
     }
 
+    // learnMore(url) {
+    //     var win = window.open(url, '_blank')
+    //     win.focus()
+    // }
+
     learnMore(url) {
-        var win = window.open(url, '_blank')
-        win.focus()
+        Meteor.call('curlUrl', url, {}, (err, result) => {
+            if (err) {
+                console.error(err)
+            } else {
+                let html = $.parseHTML(result.content)
+                let summary = $(html).find('#job_summary').get(0).innerHTML
+                this.setState({
+                    html,
+                    summary
+                })
+            }
+        })
     }
 
     render () {
@@ -29,7 +45,7 @@ Result = class Result extends Component {
                         showExpandableButton={false}
                     />
                     <CardText expandable={false}>
-                        {this.props.snippet}
+                        {this.state.summary ? <span dangerouslySetInnerHTML={{__html: this.state.summary}} /> : this.props.snippet}
                     </CardText>
                     <CardActions expandable={false} >
                         <FlatButton label="Learn More" onClick={(e) => this.learnMore(this.props.url)} />
